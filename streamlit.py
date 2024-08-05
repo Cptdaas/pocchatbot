@@ -46,7 +46,7 @@ def embeddings_on_local_vectordb(texts):
 
 # Function to format chat history
 def format_chat_history(messages):
-    return "\n".join([f"{message['role']}: {message['content']}" for message in messages])
+    return [{"role": "user", "content": message} if message.startswith("user:") else {"role": "assistant", "content": message} for message in messages]
 
 # Function to query the LLM
 def query_llm(retriever, query):
