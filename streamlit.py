@@ -1,18 +1,15 @@
 import streamlit as st
 from pathlib import Path
-from langchain import hub
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_community.llms.openai import OpenAI
-from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA, ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationalRetrievalChain
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
 # Initialize Streamlit app layout
@@ -95,8 +92,3 @@ if prompt:
     
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": ai_response})
-
-# Display chat history
-st.header("Chat History")
-for i, message in enumerate(st.session_state.messages):
-    st.write(f"{message['role'].capitalize()} {i+1}: {message['content']}")
