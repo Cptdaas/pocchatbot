@@ -1,14 +1,13 @@
 import streamlit as st
 from pathlib import Path
 from langchain import hub
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.llms.openai import OpenAI
-from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA, ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 import os
@@ -48,6 +47,10 @@ def embeddings_on_local_vectordb(texts):
     retriever = vectordb.as_retriever()
     return retriever
 
+# Function to format chat history
+def format_chat_history(messages):
+    return "\n".join([f"{message['role']}: {message['content']}" for message in messages])
+
 # Function to query the LLM
 def query_llm(retriever, query):
     qa_chain = ConversationalRetrievalChain.from_llm(
@@ -55,7 +58,8 @@ def query_llm(retriever, query):
         retriever=retriever,
         return_source_documents=True
     )
-    result = qa_chain({'question': query, 'chat_history': st.session_state.messages})
+    formatted_history = format_chat_history(st.session_state.messages)
+    result = qa_chain({'question': query, 'chat_history': formatted_history})
     return result['answer']
 
 # Load and process documents if not already done
