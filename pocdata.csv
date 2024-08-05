@@ -1,0 +1,27 @@
+TelephoneBroadband Configuration Configuration Attributes,Contract Term(in Month),No of Routers,No of Telephones,Internet Speed(Mbps),BOT Service,Business Attendent,Monthly Recurring Charges,Net recuring charge
+Config 1,3,1,8,50,0,0,45,135
+Config 2,3,1,8,100,1,1,85,255
+Config 3,6,1,7,50,0,0,50,300
+Config 4,6,1,8,100,1,0,65,390
+Config 5,6,2,10,150,1,1,40,240
+Config 6,12,1,8,50,1,1,40,480
+Config 7,12,1,8,100,0,0,65,780
+Config 8,12,1,8,150,1,0,85,1020
+Config 9,12,2,10,50,2,1,40,480
+Config 10,12,2,10,100,0,0,90,1080
+Config 11,12,2,10,150,0,1,100,1200
+Config 12,12,3,22,50,1,1,85,1020
+Config 13,24,1,8,50,1,1,70,1680
+Config 14,24,1,8,100,0,0,65,1560
+Config 15,24,1,8,150,1,0,80,1920
+Config 16,24,2,10,50,2,1,65,1560
+Config 17,24,2,10,100,0,0,85,2040
+Config 18,24,2,10,150,0,1,100,2400
+Config 19,24,2,9,50,0,1,10,240
+Config 20,36,1,8,100,1,1,15,540
+Config 21,36,8,50,150,1,65,10,360
+Config 22,36,8,100,50,0,10,10,360
+Config 23,36,8,150,100,0,15,15,540
+Config 24,36,10,50,150,1,10,10,360
+Config 25,36,10,100,200,0,15,10,360
+Config 26,36,10,150,100,1,10,15,540
